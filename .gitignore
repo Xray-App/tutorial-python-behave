@@ -1,3 +1,4 @@
+features/*.feature
 run_problematic.sh
 run_stepdata.sh
 *.zip
