@@ -31,4 +31,4 @@ jobs:
     - name: Test with behave
       run: |
         export PYTHONPATH=.
-        behave --format=cucumber_json126:PrettyCucumberJSONFormatter -o results/cucumber.json  --format=json -o results/behave.json feature
+        behave --format=cucumber_json126:PrettyCucumberJSONFormatter -o results/cucumber.json  --format=json -o results/behave.json features
