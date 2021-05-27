@@ -1,5 +1,7 @@
 # Tutorial with Behave test scenarios integrated with Xray
 
+[![build workflow](https://github.com/Xray-App/tutorial-python-behave/actions/workflows/main.yml/badge.svg)](https://github.com/Xray-App/tutorial-python-behave/actions/workflows/main.yml)
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FXray-App%2Ftutorial-python-behave.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2FXray-App%2Ftutorial-python-behave?ref=badge_shield)
 [![license](https://img.shields.io/badge/License-BSD%203--Clause-green.svg)](https://opensource.org/licenses/BSD-3-Clause)
 [![Gitter chat](https://badges.gitter.im/gitterHQ/gitter.png)](https://gitter.im/Xray-App/community)
 
@@ -21,12 +23,15 @@ pip3 install -r requirements.txt
 ## Running
 
 The straighforward approach to run everything in a single shot is to invoke the auxiliary script [run_all_cloud_standard_workflow.sh](run_all_cloud_standard_workflow.sh).
-To be able to run the scenarios, we need to have the corresponding .feature files. The previous script assumes you are using Xray to manage the specification of the scenarios,
+You need to update the client_id and client_secret to interact with your Xray cloud instance (obtainable from Xray API Keys section); you also need to update the issue keys of the corresponding stories in Jira, that you'll use as basis to generate the .feature file(s).
+
+Remember that to be able to run the scenarios, we need to have the corresponding .feature files. The previous script assumes you are using Xray to manage the specification of the scenarios,
 so you need to extract them from Jira (more on the possible workflows [here](https://docs.getxray.app/pages/viewpage.action?pageId=31622264)).
 
 When you have the .feature files, containing the Feature along with the Scenario properly tagged, you can finally run the tests using the `behave` tool.
 
 ```bash
+export PYTHONPATH=.
 behave --format=cucumber_json126:PrettyCucumberJSONFormatter -o results/cucumber.json  --format=json -o results/behave.json features
 ```
 
@@ -42,7 +47,7 @@ docker run --rm -v $(pwd)/results:/source/results -t behave_tests
 
 Results can be submitted to Jira so that they can be shared with the team and their impacts be easily analysed.
 This can be achieved using [Xray Test Management](https://www.getxray.app/) as shown in further detail in this [tutorial](https://docs.getxray.app/display/XRAYCLOUD/Testing+using+Behave+in+Python).
-This repo contains an auxiliary script [import_results_cloud.sh](import_results_cloud.sh) that does that; it uses a configuration file to have Xray's client_id and client_secret, obtainable from Xray API Keys section.
+This repo contains an auxiliary script [import_results_cloud.sh](import_results_cloud.sh) that does that; it uses a configuration file to have Xray's client_id and client_secret.
 
 
 ## Contact
