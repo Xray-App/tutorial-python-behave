@@ -59,6 +59,7 @@ For Xray specific questions, please contact [Xray's support team](https://jira.x
 
 - [Behave](https://behave.readthedocs.io/en/stable/)
 - [Possible workflows for implementing Cucumber/Behave](https://docs.getxray.app/pages/viewpage.action?pageId=31622264)
+- [Custom Cucumber reporter for Behave 1.2.6, based on previous work from fredizzimo](https://gist.github.com/bitcoder/9ca4f143a9ca1afa9fc55666c974f7c8)
 
 
 ## LICENSE
