@@ -28,7 +28,25 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
-    - name: Test with behave
+    - name: Export scenarios from Xray and generate .feature file(s)
+      run: |
+        FEATURES_FILE=features.zip
+        rm -f $FEATURES_FILE
+        curl -u ${{ secrets.JIRA_USERNAME }}:${{ secrets.JIRA_PASSWORD }}  "${{ secrets.JIRA_BASEURL }}/rest/raven/2.0/export/test?keys=XT-22;XT-23&fz=true" -o $FEATURES_FILE
+        rm -f features/*.feature
+        unzip -o $FEATURES_FILE  -d features
+    - name: Run test scenarios with behave
       run: |
         export PYTHONPATH=.
         behave --format=cucumber_json126:PrettyCucumberJSONFormatter -o results/cucumber.json  --format=json -o results/behave.json features
+    - name: "Import results to Xray"
+      uses: mikepenz/xray-action@v1.1.0
+      with:
+         username: ${{ secrets.JIRA_USERNAME }}
+         password: ${{ secrets.JIRA_PASSWORD }}
+         xrayCloud: "false"
+         xrayBaseUrl: ${{ secrets.JIRA_BASEURL }}
+         testFormat: "nunit"
+         testPaths: "**/results/cucumber.json"
+         testPlanKey: "XT-21"
+         projectKey: "XT"
