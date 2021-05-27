@@ -46,7 +46,7 @@ docker run --rm -v $(pwd)/results:/source/results -t behave_tests
 ## Submitting results to Jira
 
 Results can be submitted to Jira so that they can be shared with the team and their impacts be easily analysed.
-This can be achieved using [Xray Test Management](https://www.getxray.app/) as shown in further detail in this [tutorial](https://docs.getxray.app/display/XRAYCLOUD/Testing+using+Behave+in+Python).
+This can be achieved using [Xray Test Management](https://www.getxray.app/) as shown in further detail in this [tutorial](https://docs.getxray.app/pages/viewpage.action?pageId=76982913).
 This repo contains an auxiliary script [import_results_cloud.sh](import_results_cloud.sh) that does that; it uses a configuration file to have Xray's client_id and client_secret.
 
 
@@ -59,6 +59,7 @@ For Xray specific questions, please contact [Xray's support team](https://jira.x
 
 - [Behave](https://behave.readthedocs.io/en/stable/)
 - [Possible workflows for implementing Cucumber/Behave](https://docs.getxray.app/pages/viewpage.action?pageId=31622264)
+- [Detailed tutorial for Xray Cloud showcasing the integration with Jira Cloud](https://docs.getxray.app/pages/viewpage.action?pageId=76982913)
 - [Custom Cucumber reporter for Behave 1.2.6, based on previous work from fredizzimo](https://gist.github.com/bitcoder/9ca4f143a9ca1afa9fc55666c974f7c8)
 
 
