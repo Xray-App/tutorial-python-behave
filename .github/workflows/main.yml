@@ -48,5 +48,4 @@ jobs:
          xrayBaseUrl: ${{ secrets.JIRA_BASEURL }}
          testFormat: "cucumber"
          testPaths: "**/results/cucumber.json"
-         testPlanKey: "${{ secrets.TESTPLAN_KEY }}"
          projectKey: "XT"
