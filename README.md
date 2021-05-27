@@ -15,14 +15,14 @@ In order to run this tutorial, you need to have Python 3.x (e.g. 3.8).
 Dependencies can be installed using:
 
 ```bash
-pip3 install -r requirements
+pip3 install -r requirements.txt
 ```
 
 ## Running
 
 The straighforward approach to run everything in a single shot is to invoke the auxiliary script [run_all_cloud_standard_workflow.sh](run_all_cloud_standard_workflow.sh).
 To be able to run the scenarios, we need to have the corresponding .feature files. The previous script assumes you are using Xray to manage the specification of the scenarios,
-so you need to extract them from Jira (more on the possible workflows [here](https://docs.getxray.app/pages/viewpage.action?pageId=31622264).
+so you need to extract them from Jira (more on the possible workflows [here](https://docs.getxray.app/pages/viewpage.action?pageId=31622264)).
 
 When you have the .feature files, containing the Feature along with the Scenario properly tagged, you can finally run the tests using the `behave` tool.
 
