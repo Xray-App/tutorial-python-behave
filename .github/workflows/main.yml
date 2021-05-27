@@ -32,7 +32,7 @@ jobs:
       run: |
         FEATURES_FILE=features.zip
         rm -f $FEATURES_FILE
-        curl -u ${{ secrets.JIRA_USERNAME }}:${{ secrets.JIRA_PASSWORD }}  "${{ secrets.JIRA_BASEURL }}/rest/raven/2.0/export/test?keys=XT-22;XT-23&fz=true" -o $FEATURES_FILE
+        curl -u ${{ secrets.JIRA_USERNAME }}:${{ secrets.JIRA_PASSWORD }}  "${{ secrets.JIRA_BASEURL }}/rest/raven/2.0/export/test?keys=${{ secrets.ISSUE_KEYS_TO_EXPORT_FROM }}&fz=true" -o $FEATURES_FILE
         rm -f features/*.feature
         unzip -o $FEATURES_FILE  -d features
     - name: Run test scenarios with behave
@@ -46,7 +46,7 @@ jobs:
          password: ${{ secrets.JIRA_PASSWORD }}
          xrayCloud: "false"
          xrayBaseUrl: ${{ secrets.JIRA_BASEURL }}
-         testFormat: "nunit"
+         testFormat: "cucumber"
          testPaths: "**/results/cucumber.json"
-         testPlanKey: "XT-21"
+         testPlanKey: "${{ secrets.TESTPLAN_KEY }}"
          projectKey: "XT"
