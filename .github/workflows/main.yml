@@ -39,7 +39,7 @@ jobs:
       run: |
         export PYTHONPATH=.
         behave --format=cucumber_json126:PrettyCucumberJSONFormatter -o results/cucumber.json  --format=json -o results/behave.json features
-    - name: "Import results to Xray"
+    - name: "Import results to Xray server/DC"
       uses: mikepenz/xray-action@v1.1.0
       with:
          username: ${{ secrets.JIRA_USERNAME }}
